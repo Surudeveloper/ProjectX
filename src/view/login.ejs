@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        /* Textured background */
+        body {
+            background: url('https://www.transparenttextures.com/patterns/connected.png'), linear-gradient(to right, #6a11cb, #2575fc);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Card styling */
+        .card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            overflow: hidden; /* Prevents the image from overflowing */
+        }
+
+        input.custom-password {
+            font-family: 'monospace'; /* Ensures uniform character width */
+            letter-spacing: 5px; /* Spacing between characters */
+        }
+
+        /* Background logo styling */
+        .card img.background-logo {
+            position: absolute;
+            top: 10px; /* Adjust as needed */
+            right: 10px; /* Adjust as needed */
+            width: 80px; /* Adjust size */
+            opacity: 0.2; /* Adjust transparency */
+            z-index: 0; /* Send to the back */
+        }
+
+        /* Form input spacing */
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1; /* Bring form elements to the front */
+        }
+
+        /* Sign In & Register button styling */
+        .btn-custom {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card p-4">
+        <img src="https://via.placeholder.com/80" alt="Project Logo" class="background-logo"> <!-- Replace with your logo -->
+        <h3 class="text-center mb-4">Login</h3>
+        <form>
+            <!-- Username Input -->
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="abc@gmail.com">
+            </div>
+            <!-- Password Input -->
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="A1B2C3D4E5">
+                <button onclick="toggleMask()">Show/Hide Password</button>
+            </div>
+            <!-- Sign In Button -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-custom" onclick="login()">Sign In</button>
+            </div>
+            <!-- Register Button -->
+            <div class="form-group">
+                <button type="button" class="btn btn-secondary btn-custom" onclick="registerUser()">Register</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('fetchDataBtn').addEventListener('click', async()=> {
+            await axios.post('https://api.example.com/submit', {
+                name:  document.getElementById('username'),
+                // name: 'John Doe',
+                email: 'johndoe@example.com'
+            })
+            // .then(function (response) {
+            //     // handle success
+            //     console.log('Data submitted successfully:', response.data);
+            // })
+            // .catch(function (error) {
+            //     // handle error
+            //     console.error('Error submitting data:', error);
+            // });
+        });
+
+        function toggleMask() {
+        const passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text"; // Show text
+            } else {
+                passwordInput.type == "password"; // Revert to                       
+            }
+        }
+
+        // document.getElementById('fetchDataBtn').addEventListener('click', function() {
+        //     axios.get('https://jsonplaceholder.typicode.com/posts')
+        //       .then(function (response) {
+        //         // Display fetched data in the pre tag
+        //         document.getElementById('dataDisplay').textContent = JSON.stringify(response.data, null, 2);
+        //       })
+        //       .catch(function (error) {
+        //         console.error('Error fetching data:', error);
+        //       });
+        // });
+    </script>
+</body>
+</html>
