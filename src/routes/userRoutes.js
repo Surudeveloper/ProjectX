@@ -1,6 +1,6 @@
 import express from "express";
 import { authController } from "../controllers/authController.js";
-import { AdminController } from "../controllers/adminController.js";
+// import { AdminController } from "../controllers/adminController.js";
 
 export let userRoutes = express.Router();
 
